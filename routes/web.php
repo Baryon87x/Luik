@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PresentationController;
+use App\Http\Controllers\BoutiqueController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeControlller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -26,6 +29,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [HomeControlller::class,'index'])->name('home');
+Route::get('/boutique', [BoutiqueController::class,'index'])->name('boutique');
+Route::get('/presentation',[PresentationController::class,'index'])->name('presentation');
+Route::get('/nous-contacter', [ContactController::class,'index'])->name('nous-contacter');
 
 
 require __DIR__.'/auth.php';

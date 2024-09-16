@@ -1,11 +1,11 @@
 <template>
     <div class="bg-[#F6F1E7]">
-        <div class="container mx-auto p-8">
+        <div class=" p-8">
             <Header/>
             <Hero/>
         </div>
     </div>
-    <div class="container mx-auto">
+    <div class="">
         <Product1/>
         <TopCategorie/>
         <LookBook/>
