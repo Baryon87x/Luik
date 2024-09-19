@@ -21,15 +21,16 @@ class ArticleSeeder extends Seeder
 
             DB::beginTransaction();
 
-            for ($i=0; $i < 30 ; $i++) {
+            for ($i=0; $i < 100 ; $i++) {
                 
                 foreach($categories as $key => $value) {
 
                     article::create(attributes: [
                         'libelle' => fake()->title(),
                         'description' => fake()->text(),
-                        'quantité' => random_int(0,20),
+                        'quantite' => random_int(0,20),
                         'prix' => random_int(min: 1000, max: 500000),
+                        'rang' => random_int(1,5),
                         'categories_id' => $value,
                     ]);
                 }

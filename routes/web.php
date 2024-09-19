@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [HomeControlller::class,'index'])->name('home');
 Route::get('/boutique', [BoutiqueController::class,'index'])->name('boutique');
+Route::get('/boutique/{id}', [BoutiqueController::class,'search'])->name('boutique.search');
 Route::get('/presentation',[PresentationController::class,'index'])->name('presentation');
 Route::get('/nous-contacter', [ContactController::class,'index'])->name('nous-contacter');
 

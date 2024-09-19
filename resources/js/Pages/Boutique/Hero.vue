@@ -1,6 +1,6 @@
 <template>
     <div class="bg-cover bg-center bg-no-repeat h-[400px]"
-    style="background-image: url(assets/images/shop.jpg);">
+    :style="{backgroundImage: `url(${img.url})`}">
         <div class="container mx-auto py-36">
             <h1 class="text-center text-3xl uppercase text-white mb-1">Boutique</h1>
             <div class="flex justify-center items-center">
@@ -21,4 +21,8 @@
 </template>
 <script setup>
 import { Link } from '@inertiajs/vue3';
+const img = {
+    id: 1,
+    url: new URL('/public/assets/images/shop.jpg',import.meta.url).href
+}
 </script>

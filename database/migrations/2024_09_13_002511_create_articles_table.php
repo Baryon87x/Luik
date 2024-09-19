@@ -16,8 +16,9 @@ return new class extends Migration
             $table->id();
             $table->string('libelle');
             $table->longText('description');
-            $table->integer('quantité');
+            $table->integer('quantite');
             $table->integer('prix');
+            $table->integer('rang');
             $table->foreignIdFor(categories::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

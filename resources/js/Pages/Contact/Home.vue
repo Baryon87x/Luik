@@ -12,10 +12,10 @@
 </template>
 <script setup>
 
+import Footer from '@/Layouts/Footer.vue';
+import Header from '@/Layouts/Header.vue';
 import Menu from 'primevue/menu';
 import Contact from './Contact.vue';
-import Footer from './Footer.vue';
-import Header from './Header.vue';
 import Hero from './Hero.vue';
 
 

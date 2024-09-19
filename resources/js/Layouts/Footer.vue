@@ -9,14 +9,15 @@
                 <form action=" " class="w-full">
                     <input 
                         type="text" 
-                        class="h-auto w-[40em] bg-slate-900 border-slate-900 text-slate-400
+                        class="h-auto lg:w-[40em]   bg-slate-900 border-slate-900 text-slate-400
                         border-b-slate-500 focus:border-b-slate-500 focus:border-slate-900 focus:ring-slate-900"
                         placeholder="Votre adresse email..."
                      >
                     <div class="w-full flex justify-center items-center mt-10">
                         <button 
-                        class="text-white bg-yellow-500 py-4 px-20 rounded-sm 
-                            border-2 border-yellow-500 hover:bg-slate-900 hover:text-yellow-500 duration-300 ease-in-out"
+                        class="text-white bg-yellow-500 min-lg:py-4 min-lg:px-20 
+                            md:py-3 md:px-20 py-2 px-16 rounded-sm 
+                            border-2 border-yellow-500 hover:border-yellow-500 hover:bg-slate-900 hover:text-yellow-500 duration-300 ease-in-out"
                             >
                             S'inscrire
                         </button>
@@ -24,7 +25,7 @@
                 </form>
             </main>
            
-            <main class="text-white flex justify-between w-full border-t border-slate-700 pt-5 ">
+            <main class="text-white flex flex-wrap justify-between w-full border-t border-slate-700 pt-5 ">
                 <ul>
                     <li class="font-bold">INFORMATION</li>
                     <div class="mt-5 text-slate-500">

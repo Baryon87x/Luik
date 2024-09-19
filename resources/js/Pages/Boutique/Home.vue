@@ -5,15 +5,27 @@
         </div>
         <Hero/>
     </div>
+    <Boutique :data_item="page_data" :categories="categories"/>
     <div class="container mx-auto">
-        <Boutique/>
         <Footer/>
     </div>
 </template>
 <script setup>
+import Footer from '@/Layouts/Footer.vue';
+import Header from '@/Layouts/Header.vue';
 import Boutique from './Boutique.vue';
-import Footer from './Footer.vue';
-import Header from './Header.vue';
 import Hero from './Hero.vue';
+
+defineProps({
+    'page_data': {
+        type: Object,
+        required: true,
+    },
+    'categories':{
+        type:Object,
+        required: true
+    }
+})
+
 
 </script>
