@@ -1,7 +1,7 @@
 <template>
     <div class="container py-14">
         <h3 class="text-2xl uppercase mb-4 text-center">Meet with our Team</h3>
-            <section class="grid grid-cols-4 gap-4 place-items-center">
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center">
 
                 <div class="group">
                     <div class="team_img rounded-lg overflow-hidden relative">

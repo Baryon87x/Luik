@@ -9,8 +9,8 @@
         <History/>
         <Team/>
         <Partner/>
-        <Footer/>
     </div>
+    <Footer/>
 </template>
 <script setup>
 import Footer from '@/Layouts/Footer.vue';
@@ -19,7 +19,6 @@ import Hero from './Hero.vue';
 import History from './History.vue';
 import Partner from './Partner.vue';
 import Team from './Team.vue';
-import Vision from './Vision.vue';
 
 
 

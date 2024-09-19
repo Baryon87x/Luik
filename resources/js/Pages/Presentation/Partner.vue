@@ -1,6 +1,6 @@
 <template>
     <div class="container pb-14">
-        <h2 class="text-2xl uppercase mb-3 text-center">Nos partenaires</h2>
+        <h2 class="text-lg lg:text-xl uppercase mb-3 text-center">Nos partenaires</h2>
         <!-- swiper -->
             <div class="flex justify-center items-center">
                 <!-- Slides -->

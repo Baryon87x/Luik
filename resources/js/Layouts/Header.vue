@@ -3,10 +3,10 @@
         <span class="">LOGO</span>
         <nav class="max-md:hidden">
             <ul class="flex space-x-5 font-bold md:text-md">
-                <li><Link :href="route('home')">Accueil</Link></li>
-                <li><Link :href="route('boutique')">Boutique</Link></li>
-                <li><Link :href="route('presentation')">À propos de nous</Link></li>
-                <li><Link :href="route('nous-contacter')">Nous contacter</Link></li>
+                <li><Link class="text-sm md:text-md lg:text-lg" :href="route('home')">Accueil</Link></li>
+                <li><Link class="text-sm md:text-md lg:text-lg" :href="route('boutique')">Boutique</Link></li>
+                <li><Link class="text-sm md:text-md lg:text-lg" :href="route('presentation')">À propos de nous</Link></li>
+                <li><Link class="text-sm md:text-md lg:text-lg" :href="route('nous-contacter')">Nous contacter</Link></li>
             </ul>
         </nav>
         <div class="flex justify-center items-center space-x-5 overflow-hidden">
@@ -24,7 +24,7 @@
             <div class="">
                 <i class="pi pi-shopping-cart"></i>
             </div>
-            <span class="max-md:hidden">Connexion/Inscription</span>
+            <span class="max-md:hidden text-sm md:text-md lg:text-lg">Connexion/Inscription</span>
             <span @click="nav_item" class="hidden max-md:flex cursor-pointer">
                 <i class=" pi pi-bars"></i>
             </span>

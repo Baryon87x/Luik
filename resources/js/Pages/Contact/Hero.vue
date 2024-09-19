@@ -2,7 +2,7 @@
     <div class="bg-cover bg-center bg-no-repeat h-[350px]"
     style="background-image: url(assets/images/contact-banner.jpg);">
         <div class="container mx-auto py-36">
-            <h1 class="text-center text-3xl uppercase text-white mb-1">Contactez nous</h1>
+            <h1 class="text-center text-xl md:text-2xl lg:text-3xl uppercase text-white mb-1">Contactez nous</h1>
             <div class="flex justify-center items-center">
                 <a href="index-1.html" class="text-primary">
                     <svg width="17" height="17" viewBox="0 0 32 32">
@@ -14,7 +14,7 @@
                     <svg width="22" height="22" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6l-6-6z" /></svg>
                 </span>
-                <a href="#" class="text-white">nous contacter</a>
+                <a href="#" class="text-white text-sm md:text-md lg:text-lg">nous contacter</a>
             </div>
         </div>
     </div>
