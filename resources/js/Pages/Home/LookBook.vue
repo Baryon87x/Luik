@@ -10,7 +10,7 @@
 <template>
     <section class="h-screen w-full relative">
         <div class="bg-slate-900 h-full w-full">
-            <div class="image-bg"></div>
+            <div class="image-bg" ></div>
         </div>
         <div class="bg-slate-700 absolute h-full w-full top-0 left-0 opacity-25">
         </div>
