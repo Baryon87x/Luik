@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-cover bg-center bg-no-repeat h-[400px]"
+    <div class="bg-cover bg-center bg-no-repeat h-[400px] lg:h-[530px]"
     :style="{backgroundImage: `url(${img.url})`}">
         <div class="container mx-auto py-36">
             <h1 class="text-center text-3xl uppercase text-white mb-1">Boutique</h1>

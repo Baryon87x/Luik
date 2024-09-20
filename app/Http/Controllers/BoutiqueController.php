@@ -56,7 +56,7 @@ class BoutiqueController extends Controller
                     'nom' => $data->libelle,
                     'description' => $data->description,
                     'quantite' => $data->quantite,
-                    'prix' => $data->prix . ' FCFA',
+                    'prix' => $data->prix,
                     'rang' => $data->rang,
                     'categorie' => $data->categories->titre,
                     'image' => $data->imageArticle,

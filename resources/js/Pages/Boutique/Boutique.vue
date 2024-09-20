@@ -1,26 +1,27 @@
 
 <template>
-    <main class="flex h-auto w-full justify-around items-start mx-auto container p-8">
-        <aside class="h-auto w-auto space-y-5 ps-2">
+
+    <main class="flex container  max-md:flex-col-reverse flex-row mt-10 lg:mx-auto p-2">
+        <aside class=" h-auto space-y-5 ps-2 flex flex-col justify-stretch items-start">
             <section>
-                <h1 class="font-bold text-xl">TOUTES LES CATEGORIES</h1>
-                <div v-for="(categorie,index) in categories" :key="index" class="mt-2 ">
+                <h1 class="font-bold text-lg lg:text-xl">TOUTES LES CATEGORIES</h1>
+                <div v-for="(categorie,index) in categories" :key="index" class="mt-2 text-sm md:text-md lg:text-lg">
                     <Link :href="route('boutique.search',{id:categorie.id})"  class="ps-2 mt-0 hover:ps-5 ease-in-out duration-300 text-slate-600 hover:text-black">{{ categorie.titre }} </Link>
                 </div>
             </section>
             <section >
-                <h1 class="font-bold text-xl">FILTRE</h1>
+                <h1 class="font-bold text-lg lg:text-xl">FILTRER PAR</h1>
                 <div class="">
-                    <div v-for="(categorie,index) in categories" :key="index" class="mt-2 ">
-                        <RadioButton v-model="selectedCategory" :inputId="index" name="dynamic" :value="categorie" />
-                        <label :for="index" class="ml-2">{{ categorie}}</label>
+                    <div v-for="(filtre,index) in filterBy" :key="index" class="mt-2 text-sm md:text-md lg:text-lg">
+                        <RadioButton v-model="filtreData" :inputId="index" name="dynamic" :value="filtre" />
+                        <label :for="filtre" class="ml-2">{{ filtre }}</label>
                     </div>
                 </div>
             </section>
         </aside>
-        <article class="card h-auto w-3/4">
+        <article class="card h-auto flex-1 ">
             <Suspense>
-                <DataView :value="data_item" :layout="layout" paginator :rows="6">
+                <DataView :value="products" :layout="layout" paginator :rows="6">
                     <template #header>
                         <div class="flex justify-end">
                             <SelectButton v-model="layout" :options="options" :allowEmpty="false">
@@ -36,7 +37,7 @@
                                 <div class="flex flex-col sm:flex-row sm:items-center p-6 gap-4" :class="{ 'border-t border-surface-200 dark:border-surface-700': index !== 0 }">
                                     <div class="md:w-40 relative">
                                         <img class="block xl:block mx-auto rounded h-auto w-96" :src="item.image[0].url" :alt="item.nom" />
-                                        <Tag :value="item.quantite !=0 ? 'En stock' : 'Rupture de sock' " :severity="getSeverity(item.quantite)" class="absolute  md:text-md dark:!bg-surface-900" style="left: 4px; top: 4px"></Tag>
+                                        <Tag :value="item.quantite !=0 ? 'En stock' : 'Rupture de sock' " :severity="getSeverity(item.quantite)" class="absolute  text-sm lg:text-md dark:!bg-surface-900" style="left: 4px; top: 4px"></Tag>
                                     </div>
                                     <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
                                         <div class="flex flex-row md:flex-col justify-between items-start gap-2">
@@ -53,10 +54,10 @@
                                             </div>
                                         </div>
                                         <div class="flex flex-col md:items-end gap-8">
-                                            <span class="text-xl font-semibold">${{ item.prix }}</span>
+                                            <span class="text-xl font-semibold">{{ item.prix }} fcfa</span>
                                             <div class="flex flex-row-reverse md:flex-row gap-2">
                                                 <Button icon="pi pi-heart" outlined></Button>
-                                                <Button icon="pi pi-shopping-cart" label="Buy Now" :disabled="item.quantite === 0" class="flex-auto md:flex-initial whitespace-nowrap"></Button>
+                                                <Button icon="pi pi-shopping-cart" label="Buy Now" :disabled="item.quantite === 0" class="flex-auto md:flex-initial whitespace-nowrap text-sm md:text-md lg:text-lg"></Button>
                                             </div>
                                         </div>
                                     </div>
@@ -66,8 +67,8 @@
                     </template>
     
                     <template #grid="slotProps">
-                        <div class="grid grid-cols-12 gap-4">
-                            <div v-for="(item, index) in slotProps.items" :key="index" class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2">
+                        <div class="grid  grid-cols-12 gap-4">
+                            <div v-for="(item, index) in slotProps.items" :key="index" class="col-span-12 sm:col-span-6 md:col-span-6 xl:col-span-3 p-2">
                                 <div class="p-6 border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 rounded flex flex-col">
                                     <div class="bg-surface-50 flex justify-center rounded p-4">
                                         <div class="relative mx-auto">
@@ -91,7 +92,6 @@
                                             <span class="text-2xl font-semibold">{{ item.prix }}</span>
                                             <div class="flex gap-2">
                                                 <Button icon="pi pi-shopping-cart" label="Ajouter au panier" :disabled="item.quantite === 0 " class="flex-auto whitespace-nowrap"></Button>
-                                                <Button icon="pi pi-heart" outlined></Button>
                                             </div>
                                         </div>
                                     </div>
@@ -166,9 +166,10 @@ import Rating from 'primevue/rating';
 import Button from 'primevue/button';
 import RadioButton from 'primevue/radiobutton';
 import Tag from 'primevue/tag';
-import { ref, Suspense } from 'vue';
+import { reactive, ref, Suspense } from 'vue';
 import { Link } from '@inertiajs/vue3';
-defineProps({
+import { watch } from 'vue';
+const props = defineProps({
     'data_item': {
         type:Object,
         required: true
@@ -180,7 +181,10 @@ defineProps({
 })
 const selectedCategory = ref()
 const layout = ref('list');
+const products = ref([... props.data_item]) ;
 const options = ref(['list', 'grid']);
+const filterBy = ['Prix max','Prix min','Les mieux noté','Les moins noté'];
+const filtreData = ref('');;
 
 const getSeverity = (product) => {
     if(product  > 0){
@@ -189,4 +193,29 @@ const getSeverity = (product) => {
         return 'danger';
     }
 };
+
+watch(filtreData, async (newData, oldData)=>{
+    switch (newData) {
+        case 'Prix max':
+            products.value = products.value.sort((a,b) => a.prix < b.prix);
+            break;
+        case 'Prix min':
+            products.value = products.value.sort((a,b) => a.prix > b.prix);
+            break;
+        case 'Les mieux noté':
+            products.value = products.value.sort((a,b) => a.rang < b.rang ) ;
+            break;
+        case 'Les moins noté':
+            products.value = products.value.sort((a,b) => a.rang > b.rang ) ;
+            break;
+    }
+    // if(filtreBy.prixMax != null)
+    //     products.value = products.value.sort((a,b) => console.log(a,b));
+    
+});
+
+
+
+
+
 </script>

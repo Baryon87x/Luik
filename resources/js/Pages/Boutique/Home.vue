@@ -6,9 +6,7 @@
         <Hero/>
     </div>
     <Boutique :data_item="page_data" :categories="categories"/>
-    <div class="container mx-auto">
-        <Footer/>
-    </div>
+    <Footer/>
 </template>
 <script setup>
 import Footer from '@/Layouts/Footer.vue';

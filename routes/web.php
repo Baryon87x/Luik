@@ -4,6 +4,7 @@ use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\BoutiqueController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeControlller;
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::get('/boutique', [BoutiqueController::class,'index'])->name('boutique');
 Route::get('/boutique/{id}', [BoutiqueController::class,'search'])->name('boutique.search');
 Route::get('/presentation',[PresentationController::class,'index'])->name('presentation');
 Route::get('/nous-contacter', [ContactController::class,'index'])->name('nous-contacter');
+
+Route::get('/panier',[PanierController::class,'index'])->name('panier');
 
 
 require __DIR__.'/auth.php';
