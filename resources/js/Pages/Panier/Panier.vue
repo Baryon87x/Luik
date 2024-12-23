@@ -60,7 +60,7 @@
             </div>
         </main>
         <div class="w-full ">
-            Total: {{ prixTotal }} fcfa
+            Total: {{ prixTotal }} fcf
         </div>
         <div class="text-center mt-5 ">
             <p class="bg-slate-900 text-white py-3 px-4 w-52">Acheter</p>
@@ -68,7 +68,6 @@
     </section>
 </template>
 <script setup>
-import InputNumber from 'primevue/inputnumber';
 import Number from '@/Components/InputNumber.vue';
 import { ref } from 'vue';
 
@@ -77,7 +76,7 @@ const props = defineProps({
         type:Object,
         required:true
     }
-})
+}) 
 
 const quantite = ref([]);
 const prixTotal = ref(0);
